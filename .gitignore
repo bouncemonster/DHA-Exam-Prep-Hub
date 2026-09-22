@@ -1,0 +1,19 @@
+﻿# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Local / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+github-recovery-codes.txt
+
+# Builds / deps (if added later)
+node_modules/
+dist/
+build/
