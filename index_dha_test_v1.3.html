@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="Ultimate DHA PMU Medical License Exam Simulator 2026. Practice tests, Spaced Repetition, AI-assisted learning.">
+    <meta name="theme-color" content="#21808d">
+    <title>DHA PMU License Exam Simulator | 2026 Ultimate Edition</title>
+    <style>
+        /* ==========================================================================
+           1. CORE TOKENS & ADVANCED CSS (2026 Standards)
+           ========================================================================== */
+        :root {
+            --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            
+            /* Primitive Colors */
+            --color-teal-300: #32b8c6;
+            --color-teal-500: #21808d;
+            --color-teal-600: #1d7480;
+            --color-red-400: #ff5459;
+            --color-red-500: #c0152f;
+            --color-orange-500: #a84b2f;
+            --color-purple-500: #a855f7;
+            --color-pink-500: #ec4899;
+
+            /* Adaptive Glassmorphism utilizing modern color-mix() */
+            --bg-color-1: rgba(236,72,153,0.05);
+            --bg-color-2: rgba(168,85,247,0.05);
+            --bg-color-3: rgba(33,128,141,0.05);
+            
+            --color-text: #0f172a;
+            --color-text-secondary: #475569;
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            
+            --glass-bg: color-mix(in srgb, #ffffff 75%, transparent);
+            --glass-bg-hover: color-mix(in srgb, #ffffff 90%, transparent);
+            --glass-border: color-mix(in srgb, #ffffff 50%, transparent);
+            --glass-border-inner: color-mix(in srgb, #000000 8%, transparent);
+            --glass-blur: blur(40px) saturate(180%);
+            
+            --shadow-sm: 0 4px 12px color-mix(in srgb, #000 4%, transparent);
+            --shadow-md: 0 10px 30px color-mix(in srgb, #000 6%, transparent);
+            --shadow-glass: 0 12px 40px color-mix(in srgb, #000 6%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 80%, transparent);
+
+            --color-success: var(--color-teal-500);
+            --color-error: var(--color-red-500);
+            --color-warning: var(--color-orange-500);
+
+            /* Geometry */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --trans-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            --trans-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html.dark-theme {
+            --bg-color-1: #0f172a;
+            --bg-color-2: #1e293b;
+            --bg-color-3: #0f172a;
+            
+            --color-text: #f8fafc;
+            --color-text-secondary: #94a3b8;
+            --color-primary: var(--color-teal-300);
+            --color-primary-hover: #4fd1c5;
+            
+            --glass-bg: color-mix(in srgb, #0f172a 70%, transparent);
+            --glass-bg-hover: color-mix(in srgb, #1e293b 85%, transparent);
+            --glass-border: color-mix(in srgb, #ffffff 12%, transparent);
+            --glass-border-inner: color-mix(in srgb, #ffffff 5%, transparent);
+            
+            --shadow-sm: 0 4px 12px color-mix(in srgb, #000 30%, transparent);
+            --shadow-md: 0 10px 30px color-mix(in srgb, #000 40%, transparent);
+            --shadow-glass: 0 12px 40px color-mix(in srgb, #000 50%, transparent), inset 0 1px 0 color-mix(in srgb, #fff 10%, transparent);
+
+            --color-success: var(--color-teal-300);
+            --color-error: var(--color-red-400);
+        }
+
+        /* ==========================================================================
+           2. GLOBAL RESETS & DYNAMIC BACKGROUND
+           ========================================================================== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-main); color: var(--color-text);
+            background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 50%, var(--bg-color-3) 100%);
+            background-size: 200% 200%;
+            animation: meshBg 15s ease infinite;
+            background-attachment: fixed; min-height: 100vh; line-height: 1.6;
+            -webkit-font-smoothing: antialiased; transition: color var(--trans-smooth);
+            overflow-x: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        @keyframes meshBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        button { font-family: inherit; border: none; outline: none; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+        ul { padding-left: 20px; margin-bottom: 16px; }
+        h1, h2, h3 { line-height: 1.3; font-weight: 700; color: var(--color-text); }
+        a { color: var(--color-primary); text-decoration: none; transition: var(--trans-fast); }
+        a:hover { opacity: 0.8; }
+
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--color-text) 20%, transparent); border-radius: var(--radius-full); }
+
+        /* View Transitions API (2026 standard for seamless tab switching) */
+        ::view-transition-old(main-content),
+        ::view-transition-new(main-content) {
+            animation-duration: 0.3s;
+            animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+           3. UI COMPONENTS & LAYOUT
+           ========================================================================== */
+        .glass-panel {
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-glass); transition: var(--trans-smooth);
+        }
+
+        /* Header */
+        .header {
+            position: sticky; top: 0; z-index: 1000; padding: 16px 24px;
+            border-radius: 0; border-bottom: 1px solid var(--glass-border-inner);
+            display: flex; flex-direction: column; gap: 12px;
+            transition: transform var(--trans-smooth), opacity var(--trans-smooth);
+            transform-origin: top;
+        }
+        .header.study-mode { transform: translateY(-100%); position: absolute; opacity: 0; pointer-events: none; }
+
+        .header-top { display: flex; justify-content: space-between; align-items: center; }
+        .header-title { font-size: 1.5rem; letter-spacing: -0.5px; background: linear-gradient(135deg, var(--color-primary), var(--color-purple-500)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .header-controls { display: flex; gap: 8px; align-items: center; }
+        .icon-btn {
+            width: 44px; height: 44px; border-radius: var(--radius-full);
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            transition: var(--trans-fast); box-shadow: var(--shadow-sm); color: var(--color-text);
+        }
+        .icon-btn:hover { transform: scale(1.05); background: var(--glass-bg-hover); }
+        .icon-btn:active { transform: scale(0.95); }
+        .icon-btn.muted { opacity: 0.5; filter: grayscale(100%); }
+
+        .exam-stats-bar { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.85rem; }
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-lbl { color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.7rem; font-weight: 600; }
+        .stat-val { font-weight: 700; color: var(--color-text); }
+
+        /* Navigation */
+        .nav-container {
+            padding: 12px 24px; border-bottom: 1px solid var(--glass-border-inner);
+            overflow-x: auto; white-space: nowrap; display: flex; gap: 24px;
+            transition: transform var(--trans-smooth), opacity var(--trans-smooth);
+            transform-origin: top;
+        }
+        .nav-container.study-mode { transform: translateY(-100%); position: absolute; opacity: 0; pointer-events: none; }
+
+        .nav-group { display: flex; gap: 8px; align-items: center; }
+        .nav-group.secondary { border-left: 2px solid var(--glass-border); padding-left: 24px; }
+        
+        .nav-btn {
+            padding: 10px 20px; font-size: 0.95rem; font-weight: 600;
+            border-radius: var(--radius-md); color: var(--color-text-secondary);
+            transition: var(--trans-fast); border: 1px solid transparent;
+        }
+        .nav-btn:hover { background: color-mix(in srgb, var(--color-text) 5%, transparent); color: var(--color-text); }
+        .nav-btn.active {
+            background: color-mix(in srgb, var(--color-primary) 10%, transparent); color: var(--color-primary);
+            border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+            box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 15%, transparent);
+        }
+
+        /* Mobile Toggle for Study Mode */
+        .mobile-study-toggle {
+            position: fixed; top: 16px; right: 16px; z-index: 1001;
+            display: none; width: 44px; height: 44px; border-radius: var(--radius-full);
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-md); color: var(--color-text); font-size: 1.2rem;
+            align-items: center; justify-content: center; cursor: pointer; backdrop-filter: var(--glass-blur);
+        }
+        .mobile-study-toggle.visible { display: flex; animation: fadeUp 0.3s forwards; }
+
+        /* Main Content */
+        .main-layout { 
+            max-width: 1200px; margin: 0 auto; padding: 40px 24px; flex: 1; width: 100%;
+            view-transition-name: main-content; /* Hooks into View Transitions API */
+        }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .info-card { padding: 32px; margin-bottom: 24px; }
+        
+        /* Buttons */
+        .btn-primary {
+            padding: 16px 32px; font-size: 1.1rem; font-weight: 600;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-teal-600));
+            color: white; border-radius: var(--radius-lg); transition: var(--trans-smooth);
+            box-shadow: 0 8px 20px color-mix(in srgb, var(--color-primary) 30%, transparent);
+            display: inline-flex; align-items: center; justify-content: center; width: 100%;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 25px color-mix(in srgb, var(--color-primary) 40%, transparent); }
+        .btn-primary:active { transform: translateY(1px); }
+        
+        .btn-secondary {
+            padding: 16px 32px; font-size: 1.1rem; font-weight: 600;
+            background: var(--glass-bg); color: var(--color-text);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-lg);
+            transition: var(--trans-fast); width: 100%;
+        }
+        .btn-secondary:hover { background: var(--glass-bg-hover); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+        .btn-ai {
+            background: color-mix(in srgb, var(--color-purple-500) 15%, transparent); color: var(--color-purple-500);
+            border: 1px solid color-mix(in srgb, var(--color-purple-500) 30%, transparent); padding: 10px 20px;
+            border-radius: var(--radius-md); font-weight: 600; font-size: 0.9rem;
+            display: inline-flex; align-items: center; gap: 8px; transition: var(--trans-fast);
+        }
+        .btn-ai:hover { background: var(--color-purple-500); color: white; transform: translateY(-1px); box-shadow: var(--shadow-sm);}
+
+        /* ==========================================================================
+           4. EXAM UI & COMPONENTS
+           ========================================================================== */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 32px 0; }
+        .stat-box { padding: 24px; text-align: center; }
+        .stat-box-val { font-size: 2.5rem; font-weight: 800; color: var(--color-primary); margin-top: 8px; }
+
+        /* Timer & Progress */
+        .timer-module {
+            position: sticky; top: 16px; z-index: 50; padding: 16px; text-align: center; 
+            font-size: 2rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 24px;
+        }
+        .timer-module.warning { color: var(--color-error); animation: pulseAlert 1s infinite; }
+        
+        .progress-container { height: 8px; background: color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: var(--radius-full); margin-bottom: 32px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, var(--color-primary), var(--color-purple-500)); transition: width 0.4s ease; }
+
+        /* Question Card */
+        .question-card { padding: 40px; position: relative; overflow: hidden; }
+        .question-card::before { content: ''; position: absolute; top:0; left:0; width:100%; height:4px; background: linear-gradient(90deg, var(--color-primary), var(--color-purple-500)); }
+        
+        .q-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+        .q-meta { display: flex; flex-direction: column; gap: 4px; }
+        .q-num { font-weight: 700; font-size: 1.1rem; }
+        .q-cat { font-size: 0.85rem; color: var(--color-text-secondary); font-weight: 600;}
+        
+        .q-actions { display: flex; gap: 12px; align-items: center; }
+        .badge { padding: 6px 14px; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 700; }
+        .badge.safe { background: color-mix(in srgb, var(--color-success) 15%, transparent); color: var(--color-success); border: 1px solid color-mix(in srgb, var(--color-success) 20%, transparent);}
+        .badge.danger { background: color-mix(in srgb, var(--color-error) 15%, transparent); color: var(--color-error); border: 1px solid color-mix(in srgb, var(--color-error) 30%, transparent); animation: pulseAlert 2s infinite;}
+        
+        .btn-flag { background: transparent; border: 1px solid var(--color-primary); color: var(--color-primary); padding: 6px 14px; border-radius: var(--radius-full); font-weight: 600; transition: var(--trans-fast); }
+        .btn-flag.active { background: var(--color-primary); color: white; }
+
+        .q-text { font-size: 1.3rem; font-weight: 600; margin-bottom: 32px; line-height: 1.5; }
+
+        /* Options */
+        .options-list { display: flex; flex-direction: column; gap: 12px; }
+        .option-btn {
+            padding: 20px 24px; font-size: 1.05rem; text-align: left; font-weight: 500;
+            background: var(--glass-bg); border: 2px solid var(--glass-border); border-radius: var(--radius-md);
+            color: var(--color-text); transition: var(--trans-fast); display: flex; justify-content: space-between; align-items: center;
+            min-height: 64px;
+        }
+        /* Uses :has() to dim other options if one is selected (if supported, purely visual fallback) */
+        .options-list:has(.option-btn:disabled) .option-btn:not(:disabled) { opacity: 0.5; }
+        
+        .option-btn:hover:not(:disabled) { border-color: var(--color-primary); background: color-mix(in srgb, var(--color-primary) 5%, transparent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .option-btn:active:not(:disabled) { transform: scale(0.98); } /* Visual feedback for keyboard */
+        
+        .option-btn.correct { background: color-mix(in srgb, var(--color-success) 15%, transparent); border-color: var(--color-success); color: var(--color-success); opacity: 1 !important; z-index: 2;}
+        .option-btn.incorrect { background: color-mix(in srgb, var(--color-error) 15%, transparent); border-color: var(--color-error); color: var(--color-error); opacity: 1 !important;}
+        .key-hint { font-size: 0.8rem; opacity: 0.5; font-weight: 700; background: var(--glass-border); padding: 2px 8px; border-radius: 4px;}
+
+        .feedback-area { margin-top: 32px; display: none; }
+        .feedback-area.visible { display: block; animation: fadeUp 0.3s; }
+        .explain-box { padding: 20px; border-radius: var(--radius-md); font-size: 1rem; margin-bottom: 24px; border-left: 4px solid var(--color-text-secondary); background: color-mix(in srgb, var(--color-text) 5%, transparent); }
+        .explain-box.correct { background: color-mix(in srgb, var(--color-success) 10%, transparent); border-color: var(--color-success); }
+        .explain-box.incorrect { background: color-mix(in srgb, var(--color-error) 10%, transparent); border-color: var(--color-error); }
+
+        /* Document Checklists */
+        .chk-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; padding: 16px; background: color-mix(in srgb, var(--color-text) 3%, transparent); border-radius: var(--radius-sm); border: 1px solid var(--glass-border); transition: var(--trans-fast);}
+        .chk-item:hover { transform: translateX(4px); background: color-mix(in srgb, var(--color-text) 5%, transparent); }
+        .chk-item input { margin-top: 4px; width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-primary); }
+
+        /* History & Elements */
+        .history-card { padding: 24px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; border-left: 6px solid transparent; }
+        .history-card.passed { border-color: var(--color-success); }
+        .history-card.failed { border-color: var(--color-error); }
+        .error-log-item { padding: 20px; margin-bottom: 16px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius-md); border-left: 4px solid var(--color-error); }
+
+        /* Footer */
+        .footer { text-align: center; padding: 24px; margin-top: auto; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: var(--color-text-secondary); backdrop-filter: var(--glass-blur); background: var(--glass-bg); }
+        .footer a { color: var(--color-primary); font-weight: 600; }
+
+        /* Shortcuts Footer */
+        .kbd-hint {
+            position: fixed; bottom: 20px; right: 20px; padding: 12px 20px;
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg); font-size: 0.85rem; color: var(--color-text-secondary);
+            box-shadow: var(--shadow-md); z-index: 1000; display: none; font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes pulseAlert { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.02); } }
+        
+        .particle { position: absolute; pointer-events: none; z-index: 100; }
+        .particle.p-correct { border-radius: 50%; background: var(--color-success); box-shadow: 0 0 10px var(--color-success); }
+        .particle.p-error { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); background: var(--color-error); box-shadow: 0 0 10px var(--color-error); }
+
+        /* Responsive */
+        @media (min-width: 1024px) { .kbd-hint { display: block; } }
+        @media (max-width: 768px) {
+            .header { padding: 12px 16px; }
+            .nav-container { flex-direction: column; padding: 12px; gap: 12px; overflow-x: visible; }
+            .nav-group { flex-wrap: wrap; }
+            .nav-group.secondary { border-left: none; border-top: 1px solid var(--glass-border-inner); padding-left: 0; padding-top: 12px; }
+            .main-layout { padding: 20px 12px; }
+            .question-card, .info-card { padding: 20px; }
+            .q-text { font-size: 1.15rem; }
+            .option-btn { padding: 16px; font-size: 1rem; }
+            .key-hint { display: none; }
+            .exam-stats-bar { gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header glass-panel" id="mainHeader">
+        <div class="header-top">
+            <h1 class="header-title">DHA PMU Simulator</h1>
+            <div class="header-controls">
+                <button id="btnSound" class="icon-btn" title="Toggle Sound">🔊</button>
+                <button id="btnTheme" class="icon-btn" title="Toggle Dark Mode">🌙</button>
+            </div>
+        </div>
+        <div class="exam-stats-bar">
+            <div class="stat-item"><span class="stat-lbl">Format</span><span class="stat-val">50 MCQ</span></div>
+            <div class="stat-item"><span class="stat-lbl">Time Limit</span><span class="stat-val">30 Min</span></div>
+            <div class="stat-item"><span class="stat-lbl">Pass Mark</span><span class="stat-val">60%</span></div>
+            <div class="stat-item"><span class="stat-lbl">Max Errors</span><span class="stat-val" style="color: var(--color-error);">20</span></div>
+            <div class="stat-item"><span class="stat-lbl">Database</span><span class="stat-val" id="dbTotal">0 Q's</span></div>
+        </div>
+    </header>
+
+    <button class="mobile-study-toggle" id="btnStudyMenu" onclick="toggleStudyNav()" title="Menu">☰</button>
+
+    <nav class="nav-container glass-panel" id="mainNav">
+        <div class="nav-group">
+            <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="nav-btn" data-tab="study">Study Mode</button>
+            <button class="nav-btn" data-tab="progress">Progress</button>
+            <button class="nav-btn" data-tab="saved">🚩 Saved</button>
+        </div>
+        <div class="nav-group secondary">
+            <button class="nav-btn" data-tab="guidelines">Guidelines</button>
+            <button class="nav-btn" data-tab="documents">Documents</button>
+            <button class="nav-btn" data-tab="time">Time Mgmt</button>
+            <button class="nav-btn" data-tab="tips">Tips</button>
+        </div>
+    </nav>
+
+    <main class="main-layout">
+        
+        <section id="dashboard" class="section active">
+            <div class="glass-panel info-card">
+                <h2 style="font-size: 2rem; margin-bottom: 12px;">DHA PMU Ultimate Prep 2026</h2>
+                <p style="font-size: 1.1rem; color: var(--color-text-secondary); max-width: 850px;">
+                    This simulator flawlessly replicates the Dubai Health Authority licensing exam for Semi-Permanent Makeup. 
+                    <strong>Powered by Spaced Repetition:</strong> the algorithm analyzes your past mistakes and adaptively tests your weak points. 20 errors = instant fail.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="glass-panel stat-box">
+                    <div style="color: var(--color-text-secondary); font-weight: 600;">Total Attempts</div>
+                    <div class="stat-box-val" id="dashAttempts">0</div>
+                </div>
+                <div class="glass-panel stat-box">
+                    <div style="color: var(--color-text-secondary); font-weight: 600;">Average Score</div>
+                    <div class="stat-box-val" id="dashAvg">0%</div>
+                </div>
+                <div class="glass-panel stat-box">
+                    <div style="color: var(--color-text-secondary); font-weight: 600;">Pass Rate</div>
+                    <div class="stat-box-val" id="dashPassRate">0%</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <button class="btn-primary" onclick="startExam()">🚀 Start Smart Simulation</button>
+                <button class="btn-secondary" onclick="switchTab('guidelines')">📚 Read PMU Guidelines</button>
+            </div>
+        </section>
+
+        <section id="study" class="section">
+            <div id="studyIntro" class="glass-panel info-card" style="max-width: 800px; margin: 0 auto;">
+                <h2>Exam Rules (Prometric Standard)</h2>
+                <ul>
+                    <li><strong>Questions:</strong> 50 unique MCQ, weighted by your past mistakes (Spaced Repetition).</li>
+                    <li><strong>Time:</strong> 30 minutes strictly enforced.</li>
+                    <li><strong>Passing:</strong> Minimum 30 correct (60%). Exam terminates at 20 errors.</li>
+                    <li><strong>Focus Mode:</strong> Navigation is hidden during the exam. Use the floating menu button on mobile.</li>
+                </ul>
+                <button class="btn-primary" style="margin-top: 20px;" onclick="initExamRun()">Begin Exam Block</button>
+            </div>
+
+            <div id="studyActive" class="hidden" style="max-width: 900px; margin: 0 auto;">
+                <div class="timer-module glass-panel" id="examTimer">30:00</div>
+                <div class="progress-container"><div class="progress-bar" id="examProgress"></div></div>
+                
+                <div class="question-card glass-panel">
+                    <div class="q-header">
+                        <div class="q-meta">
+                            <span class="q-num" id="qNumDisplay">Question 1/50</span>
+                            <span class="q-cat" id="qCatDisplay">Category • Difficulty</span>
+                        </div>
+                        <div class="q-actions">
+                            <button id="btnFlag" class="btn-flag" title="Save for AI review" onclick="toggleFlag()">🚩 Flag</button>
+                            <span class="badge safe" id="errorCounter">Errors: 0/20</span>
+                        </div>
+                    </div>
+                    
+                    <div class="q-text" id="qText">Loading...</div>
+                    <div class="options-list" id="qOptions"></div>
+                    
+                    <div class="feedback-area" id="qFeedback">
+                        <div id="qExplainBox" class="explain-box"></div>
+                        <button class="btn-primary" onclick="nextQuestion()" id="btnNextQ">Next Question (Enter ↵)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="studyResults" class="hidden glass-panel info-card" style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <div style="font-size: 4rem; margin-bottom: 16px;" id="resEmoji">✅</div>
+                <h1 id="resHeading" style="margin-bottom: 8px;">Exam Passed!</h1>
+                <p id="resSub" style="font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 32px;"></p>
+                
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+                    <button class="btn-primary" style="width: auto;" onclick="startExam()">Take Another Test</button>
+                    <button class="btn-ai" style="padding: 16px 32px; font-size: 1.1rem;" onclick="copyCurrentErrorsForAI(this)">🤖 Copy Errors for AI Tutor</button>
+                </div>
+
+                <div id="errorReviewContainer" style="text-align: left;">
+                    <h3 style="border-bottom: 1px solid var(--glass-border); padding-bottom: 12px; margin-bottom: 24px;">Mistakes Review</h3>
+                    <div id="errorListHTML"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="progress" class="section">
+            <div class="glass-panel info-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <h2>Your Exam History</h2>
+                    <button class="btn-ai" onclick="copyHistoryForAI(this)">🤖 Export History for AI Analysis</button>
+                </div>
+                <p style="color: var(--color-text-secondary); margin: 16px 0 32px 0;">All data is saved locally. The Spaced Repetition algorithm automatically uses this history to test your weak points.</p>
+                <div id="historyContainer"></div>
+            </div>
+        </section>
+
+        <section id="saved" class="section">
+            <div class="glass-panel info-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <h2>🚩 Flagged Questions</h2>
+                    <button class="btn-ai" onclick="copySavedForAI(this)">🤖 Ask AI About These</button>
+                </div>
+                <p style="color: var(--color-text-secondary); margin: 16px 0 32px 0;">Questions you marked during exams. Export them to an AI to get detailed explanations based on DHA standards.</p>
+                <div id="savedContainer"></div>
+            </div>
+        </section>
+
+        <section id="guidelines" class="section">
+            <div class="glass-panel info-card">
+                <h2>Official DHA PMU Guidelines (2026)</h2>
+                <h3>Scope of Practice</h3>
+                <p>The Dubai Health Authority mandates strict licensing for PMU artists (Microblading, Lip Blush, Eyeliner). Professionals must operate under aesthetic/medical facility licenses and adhere to strict infection control.</p>
+                <h3 style="margin-top: 24px;">Exam Specifications</h3>
+                <ul>
+                    <li><strong>System:</strong> Prometric Computer-Based Test.</li>
+                    <li><strong>Language:</strong> English.</li>
+                    <li><strong>Duration & Limit:</strong> 50 questions, 30 minutes. 60% passing score (Max 20 errors).</li>
+                </ul>
+                <h3 style="margin-top: 24px;">Core Topics Tested</h3>
+                <ul>
+                    <li><strong>Sanitation & BBP:</strong> Autoclave use, BBP, sharps disposal, cross-contamination prevention.</li>
+                    <li><strong>Anatomy & Physiology:</strong> Skin layers, wound healing phases, lymphatic system. PMU depth (1.5mm Dermis).</li>
+                    <li><strong>Contraindications:</strong> Diabetes, Keloids, Pregnancy, Accutane.</li>
+                    <li><strong>Color Theory & Pigments:</strong> Fitzpatrick scale, organic vs inorganic pigments, color correction.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="documents" class="section">
+            <div class="glass-panel info-card">
+                <h2>DHA Application Documents</h2>
+                <p>Ensure these are ready for the Sheryan portal.</p>
+                <div class="chk-item"><input type="checkbox" id="d1"><label for="d1">Valid Passport Copy & Emirates ID (if resident)</label></div>
+                <div class="chk-item"><input type="checkbox" id="d2"><label for="d2">PMU/Microblading Training Certificates (Min. 120 hours)</label></div>
+                <div class="chk-item"><input type="checkbox" id="d3"><label for="d3">Primary Source Verification (DataFlow Report)</label></div>
+                <div class="chk-item"><input type="checkbox" id="d4"><label for="d4">Good Standing Certificate (from previous licensing authority)</label></div>
+                <div class="chk-item"><input type="checkbox" id="d5"><label for="d5">Basic Life Support (BLS) Certificate</label></div>
+            </div>
+        </section>
+
+        <section id="time" class="section">
+            <div class="glass-panel info-card">
+                <h2>Time Management Strategy</h2>
+                <p>30 minutes for 50 questions = <strong>36 seconds per question</strong>.</p>
+                <ul style="margin-top: 16px;">
+                    <li><strong>The 20-Minute First Pass:</strong> Answer what you know instantly. If it takes > 30s, Flag it (🚩) and move on.</li>
+                    <li><strong>The 5-Minute Review:</strong> Return to flagged questions. Use elimination.</li>
+                    <li><strong>Watch the Error Tracker:</strong> 20 errors is a hard fail. Trust your first instinct.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <div class="glass-panel info-card">
+                <h2>Prometric Center Tips</h2>
+                <ul>
+                    <li><strong>Read Carefully:</strong> Watch for "EXCEPT", "NOT", or "ALWAYS".</li>
+                    <li><strong>Sanitation is King:</strong> If asked about preventing infection, the answer almost always involves the Autoclave or single-use disposables.</li>
+                    <li><strong>Depth Matters:</strong> PMU is implanted into the upper reticular Dermis (~1.5mm). Deeper = tattoo. Shallower = fades instantly.</li>
+                    <li><strong>Use AI:</strong> Export your errors using the bottons provided and paste into ChatGPT/Claude for a customized tutor experience.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        made with 🖤 by <a href="https://moonsugar.space" target="_blank">moonsugar.space</a>
+    </footer>
+
+    <div class="kbd-hint">⌨️ Shortcuts: [1-4] Select Answer | [Enter/Space] Next Question</div>
+
+    <script>
+        /* ==========================================================================
+           INSERT YOUR 685 QUESTIONS ARRAY HERE
+           ========================================================================== */
+        const rawQuestionBank = [
+            {"id":1,"question":"What kind of disease gives bad odor in perspiration?","options":["bromhidrosis","tinea corporis","folliculitis"],"correct":["bromhidrosis"],"block":"Skin Disorders","difficulty":"easy"},
+            {"id":2,"question":"What are opposite colors in color theory?","options":["primary","complementary","analogous","monochromatic"],"correct":["complementary"],"block":"Theory","difficulty":"easy"},
+            {"id":126,"question":"What is the primary advantage of microblading for eyebrow enhancement?","options":["semi-permanent natural-looking results lasting 18-24 months","permanent results like traditional tattooing","temporary results lasting 2-3 weeks","irreversible permanent tattooing"],"correct":["semi-permanent natural-looking results lasting 18-24 months"],"block":"Procedures","difficulty":"medium"},
+            {"id":205,"question":"What is the most stable and effective sterilization method for salon tools?","options":["autoclave (steam)","UV cabinet","dry heat","chemical vapor"],"correct":["autoclave (steam)"],"block":"Sanitation","difficulty":"hard"},
+            {"id":421,"question":"Microblading depth should be:","options":["1.5mm into the dermis (not deeper)","0.5mm surface only","3mm into subcutaneous layer","varies with skin type only"],"correct":["1.5mm into the dermis (not deeper)"],"block":"Procedures","difficulty":"hard"}
+        ];
+
+        // --- GLOBAL STATE ---
+        const state = {
+            db: [], 
+            exam: { active: false, qs: [], curIdx: 0, errs: 0, corr: 0, tmr: null, end: 0 },
+            history: JSON.parse(localStorage.getItem('dha_pmu_history') || '[]'),
+            savedIds: new Set(JSON.parse(localStorage.getItem('dha_pmu_saved') || '[]')),
+            settings: {
+                theme: localStorage.getItem('dha_pmu_theme') || 'light',
+                sound: localStorage.getItem('dha_pmu_sound') !== 'false'
+            }
+        };
+
+        // --- HARDWARE APIS (Audio & Haptics) ---
+        const HW = {
+            ctx: null,
+            initAudio: function() { if(!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); if(this.ctx.state === 'suspended') this.ctx.resume(); },
+            vibrate: function(pattern) { if(navigator.vibrate) navigator.vibrate(pattern); },
+            play: function(type) {
+                if(type === 'click') this.vibrate(10);
+                if(type === 'correct') this.vibrate([20, 30, 20]);
+                if(type === 'error') this.vibrate([50, 50, 50]);
+
+                if(!state.settings.sound) return;
+                this.initAudio();
+                const o = this.ctx.createOscillator(); const g = this.ctx.createGain();
+                o.connect(g); g.connect(this.ctx.destination);
+                const n = this.ctx.currentTime;
+                
+                if(type === 'click') {
+                    o.type = 'sine'; o.frequency.setValueAtTime(800, n); o.frequency.exponentialRampToValueAtTime(400, n+0.05);
+                    g.gain.setValueAtTime(0.05, n); g.gain.exponentialRampToValueAtTime(0.001, n+0.05);
+                    o.start(n); o.stop(n+0.05);
+                } else if(type === 'correct') {
+                    o.type = 'sine'; o.frequency.setValueAtTime(440, n); o.frequency.setValueAtTime(554, n+0.1);
+                    g.gain.setValueAtTime(0, n); g.gain.linearRampToValueAtTime(0.05, n+0.05); g.gain.exponentialRampToValueAtTime(0.001, n+0.3);
+                    o.start(n); o.stop(n+0.3);
+                } else if(type === 'error') {
+                    o.type = 'sawtooth'; o.frequency.setValueAtTime(250, n); o.frequency.exponentialRampToValueAtTime(100, n+0.2);
+                    g.gain.setValueAtTime(0.05, n); g.gain.exponentialRampToValueAtTime(0.001, n+0.2);
+                    o.start(n); o.stop(n+0.2);
+                }
+            }
+        };
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            parseDB(); applyTheme(state.settings.theme); updateSound(); updateDash();
+            
+            document.querySelectorAll('.nav-btn').forEach(b => b.addEventListener('click', e => switchTab(e.target.dataset.tab)));
+            document.getElementById('btnTheme').addEventListener('click', () => { state.settings.theme = state.settings.theme === 'light' ? 'dark' : 'light'; localStorage.setItem('dha_pmu_theme', state.settings.theme); applyTheme(state.settings.theme); HW.play('click'); });
+            document.getElementById('btnSound').addEventListener('click', () => { state.settings.sound = !state.settings.sound; localStorage.setItem('dha_pmu_sound', state.settings.sound); updateSound(); HW.play('click'); });
+            document.querySelectorAll('.chk-item input').forEach(c => c.addEventListener('change', () => HW.play('click')));
+
+            document.addEventListener('keydown', handleKeys);
+        });
+
+        // --- ROBUST RECURSIVE PARSER ---
+        function parseDB() {
+            state.db = rawQuestionBank.map((q, i) => {
+                let n = { id: q.id || i, q: "Unknown Question", opts: [], cTxt: "", block: q.block || "General", diff: q.difficulty || "medium" };
+                if (q.question && typeof q.question === 'string') n.q = q.question;
+                
+                // Deep clean options
+                if (Array.isArray(q.options)) {
+                    n.opts = q.options.map(o => typeof o === 'object' && o !== null ? Object.values(o)[0] : o).filter(o => typeof o === 'string' && o.trim() !== "");
+                }
+                while(n.opts.length < 2) n.opts.push("Option " + (n.opts.length + 1));
+                
+                // Deep clean correct
+                if (Array.isArray(q.correct) && q.correct.length) {
+                    n.cTxt = typeof q.correct[0] === 'object' ? Object.values(q.correct[0])[0] : q.correct[0];
+                } else if (typeof q.correct === 'string') n.cTxt = q.correct;
+                else n.cTxt = n.opts[0];
+
+                if(typeof n.cTxt !== 'string') n.cTxt = String(n.cTxt);
+                if(!n.opts.includes(n.cTxt)) n.opts.push(n.cTxt);
+                return n;
+            });
+            document.getElementById('dbTotal').textContent = `${state.db.length} Q's`;
+        }
+
+        // --- UI CORE & VIEW TRANSITIONS ---
+        function switchTab(tId) {
+            if(state.exam.active && tId !== 'study') { if(!confirm("Exit active exam? Progress will be lost.")) return; terminateExam("Abandoned"); }
+            
+            const updateDOM = () => {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`.nav-btn[data-tab="${tId}"]`).classList.add('active');
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.getElementById(tId).classList.add('active');
+                if(tId === 'progress') renderHist();
+                if(tId === 'saved') renderSaved();
+            };
+
+            // Use View Transitions API if supported (2026 Standard)
+            if (document.startViewTransition) { document.startViewTransition(() => updateDOM()); } 
+            else { updateDOM(); }
+            
+            HW.play('click');
+        }
+
+        function toggleStudyNav() {
+            const h = document.getElementById('mainHeader');
+            const n = document.getElementById('mainNav');
+            h.classList.toggle('study-mode'); n.classList.toggle('study-mode');
+            HW.play('click');
+        }
+
+        function applyTheme(t) { document.documentElement.className = t === 'dark' ? 'dark-theme' : 'light-theme'; document.getElementById('btnTheme').textContent = t === 'dark' ? '☀️' : '🌙'; }
+        function updateSound() { document.getElementById('btnSound').className = `icon-btn ${!state.settings.sound ? 'muted' : ''}`; }
+        function updateDash() {
+            document.getElementById('dashAttempts').textContent = state.history.length;
+            if(state.history.length > 0) {
+                const pass = state.history.filter(h => h.passed).length;
+                const avg = state.history.reduce((a, b) => a + b.perc, 0) / state.history.length;
+                document.getElementById('dashAvg').textContent = `${Math.round(avg)}%`;
+                document.getElementById('dashPassRate').textContent = `${Math.round((pass/state.history.length)*100)}%`;
+            }
+        }
+
+        // --- SPACED REPETITION ENGINE ---
+        function getSpacedRepetitionQs(max) {
+            const errFreq = {};
+            state.history.forEach(h => { if(h.log) h.log.forEach(l => { errFreq[l.id] = (errFreq[l.id] || 0) + 1; }); });
+            
+            let pool = [];
+            state.db.forEach(q => {
+                const w = 1 + (errFreq[q.id] || 0) * 3; // 3x weight for errors
+                for(let i=0; i<w; i++) pool.push(q);
+            });
+            
+            for(let i = pool.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [pool[i], pool[j]] = [pool[j], pool[i]]; }
+            
+            const selected = []; const seen = new Set();
+            for(let q of pool) { if(selected.length >= max) break; if(!seen.has(q.id)) { selected.push(q); seen.add(q.id); } }
+            return selected;
+        }
+
+        // --- EXAM LOGIC ---
+        function startExam() { switchTab('study'); document.getElementById('studyIntro').classList.remove('hidden'); document.getElementById('studyActive').classList.add('hidden'); document.getElementById('studyResults').classList.add('hidden'); }
+
+        function initExamRun() {
+            document.getElementById('mainHeader').classList.add('study-mode');
+            document.getElementById('mainNav').classList.add('study-mode');
+            document.getElementById('btnStudyMenu').classList.add('visible');
+
+            const MAX_Q = Math.min(50, state.db.length);
+            const selectedDB = getSpacedRepetitionQs(MAX_Q);
+            
+            state.exam.qs = selectedDB.map(q => {
+                let ops = [...q.opts];
+                for(let i = ops.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ops[i], ops[j]] = [ops[j], ops[i]]; }
+                return { ...q, opts: ops, cIdx: ops.indexOf(q.cTxt), sel: null };
+            });
+
+            state.exam.curIdx = 0; state.exam.errs = 0; state.exam.corr = 0; state.exam.active = true;
+            state.exam.endTime = Date.now() + (30 * 60 * 1000);
+            clearInterval(state.exam.tmr); state.exam.tmr = setInterval(tickTmr, 1000);
+
+            document.getElementById('studyIntro').classList.add('hidden');
+            document.getElementById('studyResults').classList.add('hidden');
+            document.getElementById('studyActive').classList.remove('hidden');
+            
+            renderQ(); HW.play('click');
+        }
+
+        function tickTmr() {
+            const rem = Math.max(0, Math.floor((state.exam.endTime - Date.now()) / 1000));
+            const el = document.getElementById('examTimer');
+            el.textContent = `${Math.floor(rem/60)}:${(rem%60).toString().padStart(2,'0')}`;
+            if(rem <= 300) el.classList.add('warning'); else el.classList.remove('warning');
+            if(rem <= 0) terminateExam("Time Expired");
+        }
+
+        function renderQ() {
+            const q = state.exam.qs[state.exam.curIdx];
+            const isF = state.savedIds.has(q.id);
+            
+            document.getElementById('qNumDisplay').textContent = `Question ${state.exam.curIdx + 1}/${state.exam.qs.length}`;
+            document.getElementById('qCatDisplay').textContent = `${q.block} • ${q.diff.toUpperCase()}`;
+            document.getElementById('examProgress').style.width = `${((state.exam.curIdx)/state.exam.qs.length)*100}%`;
+            
+            const eBadge = document.getElementById('errorCounter');
+            eBadge.textContent = `Errors: ${state.exam.errs}/20`;
+            eBadge.className = `badge ${state.exam.errs >= 15 ? 'danger' : 'safe'}`;
+
+            const fBtn = document.getElementById('btnFlag');
+            fBtn.className = `btn-flag ${isF ? 'active' : ''}`; fBtn.textContent = isF ? '✅ Flagged' : '🚩 Flag';
+
+            document.getElementById('qText').textContent = q.q;
+            const opC = document.getElementById('qOptions'); opC.innerHTML = '';
+            
+            q.opts.forEach((opt, i) => {
+                const b = document.createElement('button'); b.className = 'option-btn';
+                b.innerHTML = `<span>${i+1}. ${opt}</span><span class="key-hint">[${i+1}]</span>`;
+                b.onclick = () => selAns(i, b); opC.appendChild(b);
+            });
+            document.getElementById('qFeedback').classList.remove('visible');
+        }
+
+        function toggleFlag() {
+            if(!state.exam.active) return;
+            const qId = state.exam.qs[state.exam.curIdx].id;
+            if(state.savedIds.has(qId)) state.savedIds.delete(qId); else state.savedIds.add(qId);
+            localStorage.setItem('dha_pmu_saved', JSON.stringify(Array.from(state.savedIds)));
+            renderQ(); HW.play('click');
+        }
+
+        function selAns(idx, bEl) {
+            const q = state.exam.qs[state.exam.curIdx];
+            if(q.sel !== null) return; 
+            q.sel = idx; const isC = idx === q.cIdx;
+            
+            // Visual keypress effect for keyboard users
+            bEl.style.transform = 'scale(0.98)'; setTimeout(() => bEl.style.transform = '', 150);
+
+            const btns = document.querySelectorAll('.option-btn');
+            btns.forEach(b => b.disabled = true);
+            const box = document.getElementById('qExplainBox');
+
+            if(isC) {
+                state.exam.corr++; bEl.classList.add('correct'); createParticles(bEl, true);
+                box.className = 'explain-box correct'; box.innerHTML = '<strong>✅ Correct!</strong> Proceeding...';
+                HW.play('correct'); setTimeout(nextQ, 800); 
+            } else {
+                state.exam.errs++; bEl.classList.add('incorrect'); btns[q.cIdx].classList.add('correct');
+                createParticles(bEl, false);
+                box.className = 'explain-box incorrect'; box.innerHTML = `<strong>❌ Incorrect.</strong> Correct Answer: <br><em>${q.opts[q.cIdx]}</em>`;
+                document.getElementById('qFeedback').classList.add('visible');
+                HW.play('error');
+                if(state.exam.errs >= 20) setTimeout(() => terminateExam("Maximum Errors Reached (20/20)"), 2000);
+            }
+        }
+
+        function nextQ() {
+            state.exam.curIdx++;
+            if(state.exam.curIdx >= state.exam.qs.length) terminateExam();
+            else { renderQ(); HW.play('click'); }
+        }
+
+        function terminateExam(rsn = null) {
+            clearInterval(state.exam.tmr); state.exam.active = false;
+            
+            document.getElementById('mainHeader').classList.remove('study-mode');
+            document.getElementById('mainNav').classList.remove('study-mode');
+            document.getElementById('btnStudyMenu').classList.remove('visible');
+
+            const tot = state.exam.qs.length;
+            const perc = Math.round((state.exam.corr / tot) * 100);
+            const passed = perc >= 60 && state.exam.errs <= 20 && !rsn;
+            
+            if(state.exam.curIdx > 0) { 
+                state.history.unshift({
+                    id: Date.now(), date: new Date().toISOString(), score: state.exam.corr, max: tot, perc, passed, errors: state.exam.errs,
+                    log: state.exam.qs.filter(q => q.sel !== null && q.sel !== q.cIdx).map(q => ({ id: q.id, q: q.q, c: q.opts[q.cIdx], w: q.opts[q.sel], b: q.block }))
+                });
+                localStorage.setItem('dha_pmu_history', JSON.stringify(state.history));
+                updateDash();
+            }
+
+            document.getElementById('studyActive').classList.add('hidden');
+            document.getElementById('studyResults').classList.remove('hidden');
+            
+            document.getElementById('resEmoji').textContent = passed ? '🏆' : '📚';
+            const h = document.getElementById('resHeading'); h.textContent = passed ? 'Passed!' : 'Failed'; h.style.color = passed ? 'var(--color-success)' : 'var(--color-error)';
+            document.getElementById('resSub').innerHTML = `Score: <strong>${state.exam.corr}/${tot} (${perc}%)</strong><br>Errors: <strong>${state.exam.errs}/20</strong><br>${rsn ? `<span style="color:var(--color-error)">${rsn}</span>` : ''}`;
+
+            const errLog = state.history.length > 0 ? state.history[0].log : [];
+            const htmlLog = errLog.map((e, i) => `
+                <div class="error-log-item">
+                    <p style="font-size:0.8rem; color:var(--color-text-secondary);">${e.b}</p>
+                    <p style="font-weight:600; margin-bottom:8px;">${i+1}. ${e.q}</p>
+                    <p style="color:var(--color-error); font-size:0.9rem;">Your Answer: ${e.w}</p>
+                    <p style="color:var(--color-success); font-size:0.9rem;">Correct: ${e.c}</p>
+                </div>
+            `).join('') || '<p style="color:var(--color-success); font-weight:600;">Flawless victory! Zero errors.</p>';
+            document.getElementById('errorListHTML').innerHTML = htmlLog;
+        }
+
+        // --- SUB-VIEWS ---
+        function renderHist() {
+            const c = document.getElementById('historyContainer');
+            if(!state.history.length) { c.innerHTML = '<p>No history yet.</p>'; return; }
+            c.innerHTML = state.history.map((h, i) => `
+                <div class="glass-panel history-card ${h.passed ? 'passed' : 'failed'}">
+                    <div>
+                        <div style="font-weight:700; font-size:1.1rem;">Attempt #${state.history.length - i}</div>
+                        <div style="font-size:0.85rem; color:var(--color-text-secondary);">${new Date(h.date).toLocaleString()}</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-weight:800; font-size:1.2rem; color: ${h.passed ? 'var(--color-success)' : 'var(--color-error)'}">${h.perc}%</div>
+                        <div style="font-size:0.85rem; color:var(--color-text-secondary);">Errors: ${h.errors}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderSaved() {
+            const c = document.getElementById('savedContainer');
+            if(state.savedIds.size === 0) { c.innerHTML = '<p>No flagged questions.</p>'; return; }
+            const sQ = state.db.filter(q => state.savedIds.has(q.id));
+            c.innerHTML = sQ.map(q => `
+                <div class="glass-panel history-card" style="border-left: 4px solid var(--color-primary); flex-direction:column; align-items:flex-start;">
+                    <div style="font-size:0.8rem; color:var(--color-text-secondary); margin-bottom:8px;">${q.block}</div>
+                    <div style="font-weight:600; margin-bottom:12px;">${q.q}</div>
+                    <div style="font-size:0.9rem; color:var(--color-success);">✅ ${q.cTxt}</div>
+                </div>
+            `).join('');
+        }
+
+        // --- STRICT AI EXPORTERS ---
+        function copyTxt(t, btn) {
+            navigator.clipboard.writeText(t).then(() => {
+                const o = btn.innerHTML; btn.innerHTML = '✅ Copied!'; btn.style.background = 'var(--color-success)'; btn.style.color='white';
+                setTimeout(() => { btn.innerHTML = o; btn.style.background = ''; btn.style.color=''; }, 2000);
+            });
+        }
+        
+        const sysPrompt = "Act as an expert examiner for the UAE Dubai Health Authority (DHA). Base your explanations STRICTLY on DHA, MOHAP, and ESMA guidelines for Permanent Makeup (PMU). Do not use US FDA or HIPAA standards. Provide clear, educational breakdowns.\n\n";
+
+        function copyCurrentErrorsForAI(btn) {
+            if(!state.history.length || !state.history[0].log.length) { alert("No errors!"); return; }
+            let t = sysPrompt + `Analyze my mistakes from a PMU mock exam. Explain WHY the correct answer is right and why mine is wrong:\n\n`;
+            state.history[0].log.forEach((e, i) => t += `${i+1}. Q: ${e.q}\n   Wrong: ${e.w}\n   Correct: ${e.c}\n\n`);
+            copyTxt(t, btn);
+        }
+
+        function copyHistoryForAI(btn) {
+            if(!state.history.length) return;
+            let t = sysPrompt + `Here is my PMU exam history. Analyze my pass rate and error trends. Give me a study plan.\n\nAttempts: ${state.history.length}\n`;
+            state.history.slice(0, 5).forEach((h, i) => { t += `Attempt ${i+1}: ${h.passed?'Pass':'Fail'}, Score: ${h.score}/${h.max}, Errors: ${h.errors}\n`; });
+            copyTxt(t, btn);
+        }
+
+        function copySavedForAI(btn) {
+            if(state.savedIds.size === 0) return;
+            let t = sysPrompt + `I flagged these PMU questions because they are confusing. Provide a detailed explanation for the underlying concepts:\n\n`;
+            state.db.filter(q => state.savedIds.has(q.id)).forEach((q, i) => t += `${i+1}. Topic: ${q.block}\n   Q: ${q.q}\n   Correct: ${q.cTxt}\n\n`);
+            copyTxt(t, btn);
+        }
+
+        // --- KEYBOARD & EFFECTS ---
+        function handleKeys(e) {
+            if(!state.exam.active) return;
+            const fb = document.getElementById('qFeedback');
+            if(fb.classList.contains('visible')) {
+                if(e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); document.getElementById('btnNextQ').click(); }
+            } else {
+                if(['1','2','3','4'].includes(e.key)) {
+                    const idx = parseInt(e.key)-1; const btns = document.querySelectorAll('.option-btn');
+                    if(btns[idx] && !btns[idx].disabled) { btns[idx].click(); }
+                }
+            }
+        }
+
+        function createParticles(btn, isC) {
+            const r = btn.getBoundingClientRect();
+            for(let i=0; i<6; i++) {
+                const p = document.createElement('div'); p.className = `particle ${isC ? 'p-correct' : 'p-error'}`;
+                p.style.width = p.style.height = (Math.random()*6 + 4) + 'px';
+                p.style.left = (r.left + r.width/2) + 'px'; p.style.top = (r.top + r.height/2) + 'px';
+                document.body.appendChild(p);
+                const a = Math.random() * Math.PI * 2; const d = Math.random() * 40 + 20;
+                p.animate([ { transform: 'translate(0,0) scale(1)', opacity: 1 }, { transform: `translate(${Math.cos(a)*d}px, ${Math.sin(a)*d - 20}px) scale(0)`, opacity: 0 } ], 
+                { duration: 500 + Math.random()*300, easing: 'ease-out' }).onfinish = () => p.remove();
+            }
+        }
+    </script>
+</body>
+</html>
