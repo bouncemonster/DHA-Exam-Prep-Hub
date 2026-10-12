@@ -6,6 +6,8 @@ The source of truth is `bouncemonster/DHA-Exam-Prep-Hub` on its current GitHub d
 
 Read [README.md](README.md), inspect the current `index.html` and review the latest relevant Git history before changing behavior. The application currently combines markup, styles, question content and JavaScript in that file. There is no package manifest or declared automated app-test command; do not invent npm setup or a passing CI result.
 
+One hosted build exists: `dha-exam.moonsugar.space`, published from the pinned revision by the sibling `moonsugar.space` repository (see README “Hosted build”). It is not this repository's infrastructure: a commit or push here does not republish the subdomain, and no hosting, DNS or release action is authorized by work in this tree.
+
 ## Start or resume
 
 Confirm repository identity and branch before editing:
